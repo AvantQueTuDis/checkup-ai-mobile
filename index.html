@@ -1,203 +1,43 @@
 <!doctype html>
-<html lang="pl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#101827">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="CheckUp AI">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icon-192.png">
-<title>CheckUp AI Mobile</title>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b1728"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="CheckUp AI"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png"><title>CheckUp AI v0.5</title>
 <style>
-:root{--bg:#0b1220;--panel:#131e30;--panel2:#1a2940;--text:#eef4ff;--muted:#9aabc2;--line:#263750;--blue:#5aa8ff;--green:#4bd39a;--yellow:#ffca68;--red:#ff7777}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#101b2d,#09111e);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
-header{padding:calc(env(safe-area-inset-top) + 20px) 20px 18px;position:sticky;top:0;background:#101b2df2;backdrop-filter:blur(18px);z-index:5;border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:11px}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#54b1ff,#6477ff);display:grid;place-items:center;font-size:22px;font-weight:800;color:#081322}.brand strong{font-size:18px;letter-spacing:.3px}.brand small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
-main{max-width:720px;margin:auto;padding:18px 16px 44px}.hero{padding:20px;border:1px solid #29405e;border-radius:22px;background:radial-gradient(circle at 90% 0%,#24476d 0,#172b46 38%,#142137 100%);margin-bottom:16px}
-.eyebrow{font-size:11px;letter-spacing:1.3px;color:#9ecbff;font-weight:700}.hero h1{font-size:27px;line-height:1.12;margin:9px 0}.hero p{color:#c2d1e4;font-size:14px;line-height:1.5;margin:0}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:15px;min-width:0}.card h3{font-size:14px;margin:0 0 6px}.card p{font-size:12px;line-height:1.4;color:var(--muted);margin:0 0 12px}.ico{font-size:22px;margin-bottom:9px}.status{font-size:11px;color:var(--muted);margin-top:9px;min-height:15px}
-button{border:0;border-radius:12px;padding:12px 14px;background:var(--blue);color:#071321;font-weight:750;font-size:13px;cursor:pointer;width:100%}button.secondary{background:#243752;color:#eaf3ff;border:1px solid #38516f}button:disabled{opacity:.55}
-.section-title{font-size:16px;margin:22px 2px 11px}.wide{margin-top:12px}.results{margin-top:16px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px}
-.result-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}.result-row:last-child{border:0}.pill{font-size:11px;padding:4px 8px;border-radius:99px;background:#23354b;color:#d9e8fb;white-space:nowrap}.good{color:var(--green)}.warn{color:var(--yellow)}.bad{color:var(--red)}
-#touchArea{height:130px;border:1px dashed #5d83ae;border-radius:13px;display:grid;place-items:center;color:#9db8d6;text-align:center;font-size:13px;background:#101b2a;touch-action:pan-y}
-#colorArea{display:none;height:190px;border-radius:12px;overflow:hidden;margin-top:10px}
-.note{color:var(--muted);font-size:11px;line-height:1.5;margin-top:16px}
-footer{text-align:center;color:#7388a4;font-size:11px;padding:25px 12px}
-#cameraPreview{width:100%;border-radius:12px;margin-top:10px;background:#000;display:none}\n#reportPreview{display:none;background:#fff;color:#17202a;border-radius:16px;padding:18px;margin-top:16px}#reportPreview table{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}#reportPreview td,#reportPreview th{overflow-wrap:anywhere}#reportPreview td,#reportPreview th{text-align:left;border-bottom:1px solid #ddd;padding:8px;vertical-align:top}#reportPreview button{margin-top:12px}\n@media print{body{background:#fff!important;color:#111!important}header,main>.hero,main>.section-title,main>.grid,main>#screenTools,main>#cameraPreview,main>.results,footer{display:none!important}main{padding:0!important}#reportPreview{display:block!important;color:#111!important;border:0!important;margin:0!important;padding:0!important}}
-.hidden{display:none!important}
-@media(min-width:620px){main{padding-top:24px}.hero h1{font-size:32px}}
-@media print{body{background:white;color:#111}header,.hero,.grid,footer,button{display:none!important}main{padding:0}.results,.card{background:white;color:#111;border:1px solid #bbb}.result-row{border-color:#ddd}.pill{color:#111;background:#eee}.note{color:#333}}
-</style>
-</head>
-<body>
-<header><div class="brand"><div class="logo">C</div><div><strong>CHECKUP AI</strong><small>MOBILE · PROTOTYP TESTOWY v0.3</small></div></div></header>
-<main>
-<section class="hero">
- <div class="eyebrow">DIAGNOSTYKA URZĄDZENIA</div>
- <h1>Sprawdź swój telefon.</h1>
- <p>Wykonaj kilka prostych testów i zobacz, jakie informacje i funkcje iPhone udostępnia aplikacji. To prototyp — nie certyfikuje sprawności urządzenia.</p>
-</section>
-<h2 class="section-title">Testy diagnostyczne</h2>
+:root{--bg:#071321;--panel:#101f32;--panel2:#162940;--line:#29415d;--text:#edf5ff;--muted:#a7bad0;--blue:#2678f5;--green:#20d58b;--amber:#ffbf57;--red:#ff6875}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#0b1b2e,#071321 65%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}header{position:sticky;top:0;z-index:5;background:#0b1929ed;backdrop-filter:blur(15px);border-bottom:1px solid var(--line);padding:calc(env(safe-area-inset-top) + 12px) 16px 12px}.brand{display:flex;align-items:center;gap:11px}.logo{width:40px;height:40px;border-radius:13px;background:linear-gradient(135deg,#36a8ff,#6959ed);display:grid;place-items:center;font-size:22px;font-weight:900}.brand b{font-size:18px}.brand small{display:block;color:var(--muted);font-size:11px;margin-top:2px}.ver{margin-left:auto;background:#064b3b;color:#67f3bd;border:1px solid #138c69;border-radius:20px;padding:6px 10px;font-size:11px;font-weight:800}main{max-width:1000px;margin:auto;padding:16px}.hero{border:1px solid #294e77;border-radius:20px;padding:19px;background:radial-gradient(circle at 90% 0,#1d4775,#132944 55%,#102036)}.eyebrow{font-size:10px;letter-spacing:1.5px;color:#9bcaff;font-weight:800}.hero h1{font-size:25px;margin:8px 0}.hero p{color:#c4d4e8;font-size:13px;line-height:1.5;margin:0}.section{font-size:16px;margin:22px 2px 11px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{background:linear-gradient(145deg,#14263c,#0f1e30);border:1px solid var(--line);border-radius:16px;padding:14px;min-width:0}.card h3{font-size:14px;margin:0 0 5px}.card p{font-size:11px;line-height:1.4;color:var(--muted);margin:0 0 11px}.ico{font-size:21px;margin-bottom:7px}button{border:0;border-radius:11px;background:var(--blue);color:white;font-weight:750;padding:11px 12px;font-size:12px;width:100%;cursor:pointer}button.secondary{background:#203751;border:1px solid #385777}button:disabled{opacity:.5}.status{font-size:11px;color:var(--muted);margin-top:8px;min-height:15px}.good{color:var(--green)}.warn{color:var(--amber)}.bad{color:var(--red)}.wide{margin-top:10px}.results{margin-top:18px}.resultrow{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:12px}.pill{background:#243951;border-radius:20px;padding:4px 8px;font-size:10px;white-space:normal;text-align:right}.tools{display:none;margin-top:12px}.video{width:100%;background:#000;border-radius:13px;max-height:310px;object-fit:cover}.camgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.touch{height:110px;border:1px dashed #7297bd;border-radius:12px;display:grid;place-items:center;color:#bed3e9;touch-action:pan-y}.meter{height:9px;background:#293e55;border-radius:20px;overflow:hidden;margin-top:8px}.fill{height:100%;width:0;background:var(--green);transition:width .08s}.colors{height:120px;border-radius:12px;margin:10px 0}.note{font-size:10px;color:var(--muted);line-height:1.5;margin-top:15px}#report{display:none;background:white;color:#152236;padding:20px;border-radius:12px;margin-top:16px}#report table{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}#report td,#report th{border-bottom:1px solid #ddd;text-align:left;padding:8px;overflow-wrap:anywhere;vertical-align:top}@media(min-width:650px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero h1{font-size:31px}}@media print{body{background:white;color:#111}header,main>.hero,main>.section,main>.grid,main>.results,footer{display:none!important}#report{display:block!important}}
+</style></head><body>
+<header><div class="brand"><div class="logo">C</div><div><b>CHECKUP AI</b><small>Diagnostyka urządzeń mobilnych</small></div><span class="ver">v0.5</span></div></header>
+<main><section class="hero"><div class="eyebrow">DIAGNOSTYKA URZĄDZENIA</div><h1>Sprawdź swój telefon.</h1><p>Wykonaj testy i zobacz zrozumiałe wyniki. Prototyp nie certyfikuje sprawności urządzenia; niektóre dane są ograniczone przez iOS.</p></section>
+<h2 class="section">Testy diagnostyczne</h2>
 <div class="grid">
- <article class="card"><div class="ico">📱</div><h3>Informacje o urządzeniu</h3><p>Przeglądarka, system i podstawowe możliwości.</p><button onclick="runDevice()">Sprawdź</button><div class="status" id="deviceStatus">Nie wykonano</div></article>
- <article class="card"><div class="ico">🔋</div><h3>Bateria</h3><p>Sprawdzenie, czy system udostępnia dane baterii.</p><button onclick="runBattery()">Sprawdź</button><div class="status" id="batteryStatus">Nie wykonano</div></article>
- <article class="card"><div class="ico">🖥️</div><h3>Ekran i dotyk</h3><p>Test kolorów oraz rejestracji dotyku.</p><button onclick="runScreen()">Uruchom test</button><div class="status" id="screenStatus">Nie wykonano</div></article>
- <article class="card"><div class="ico">🎙️</div><h3>Mikrofon</h3><p>Sprawdzenie dostępu do mikrofonu i poziomu sygnału.</p><button onclick="runMic()">Test mikrofonu (5 s)</button><div class="status" id="micStatus">Nie wykonano</div><div id="micMeter" style="height:8px;background:#263750;border-radius:99px;overflow:hidden;margin-top:8px"><div id="micMeterFill" style="height:8px;width:0%;background:#4bd39a;border-radius:99px"></div></div></article>
- <article class="card"><div class="ico">📷</div><h3>Aparat</h3><p>Sprawdzenie, czy można uruchomić kamerę.</p><button onclick="runCamera()">Test aparatu</button><div class="status" id="cameraStatus">Nie wykonano</div></article>
- <article class="card"><div class="ico">🧭</div><h3>Czujniki ruchu</h3><p>Odczyt dostępnych danych ruchu/orientacji.</p><button onclick="runSensors()">Test czujników</button><div class="status" id="sensorStatus">Nie wykonano</div></article>
- <article class="card"><div class="ico">🔊</div><h3>Głośnik</h3><p>Odtwórz ton testowy i oceń odsłuch.</p><button onclick="runSpeaker()">Odtwórz ton</button><div class="status" id="speakerStatus">Nie wykonano</div></article>
- <article class="card"><div class="ico">🌐</div><h3>Łączność</h3><p>Sprawdzenie podstawowych informacji sieciowych.</p><button onclick="runNetwork()">Sprawdź</button><div class="status" id="networkStatus">Nie wykonano</div></article>
+<article class="card"><div class="ico">📱</div><h3>Informacje o urządzeniu</h3><p>Przeglądarka, system i ekran.</p><button onclick="device()">Sprawdź</button><div class="status" id="deviceStatus">Nie wykonano</div></article>
+<article class="card"><div class="ico">🔋</div><h3>Bateria</h3><p>Odczyt danych, jeśli iOS je udostępnia.</p><button onclick="battery()">Sprawdź</button><div class="status" id="batteryStatus">Nie wykonano</div></article>
+<article class="card"><div class="ico">📷</div><h3>Dwa aparaty</h3><p>Przetestuj przednią i tylną kamerę oraz przełączanie.</p><button onclick="cameraTest()">Uruchom test aparatów</button><div class="status" id="cameraStatus">Nie wykonano</div></article>
+<article class="card"><div class="ico">🎙️</div><h3>Mikrofon</h3><p>Pomiar sygnału przez 5 sekund.</p><button onclick="micTest()">Mów przez 5 sekund</button><div class="meter"><div class="fill" id="micFill"></div></div><div class="status" id="micStatus">Nie wykonano</div></article>
+<article class="card"><div class="ico">🖥️</div><h3>Ekran i dotyk</h3><p>Kolory i rejestracja dotyku.</p><button onclick="screenTest()">Uruchom test</button><div class="status" id="screenStatus">Nie wykonano</div></article>
+<article class="card"><div class="ico">🧭</div><h3>Czujniki ruchu</h3><p>Odczyt danych, jeśli dostępne.</p><button onclick="sensorTest()">Sprawdź czujniki</button><div class="status" id="sensorStatus">Nie wykonano</div></article>
+<article class="card"><div class="ico">🔊</div><h3>Głośnik</h3><p>Odtwórz tony testowe i oceń odsłuch.</p><button onclick="speakerTest()">Odtwórz tony</button><div class="status" id="speakerStatus">Nie wykonano</div></article>
+<article class="card"><div class="ico">🌐</div><h3>Łączność</h3><p>Status połączenia sieciowego.</p><button onclick="networkTest()">Sprawdź</button><div class="status" id="networkStatus">Nie wykonano</div></article>
 </div>
-<div id="screenTools" class="card wide hidden">
- <h3>Test ekranu</h3><p>Naciśnij „Kolejny kolor”, aby wyświetlić pełne pola barw. Obejrzyj ekran pod kątem plam i martwych pikseli.</p>
- <div id="colorArea"></div><button class="secondary" onclick="nextColor()">Kolejny kolor</button>
- <h3 style="margin-top:16px">Test dotyku</h3><div id="touchArea">Przesuwaj palcem po tym polu</div><div class="status" id="touchStatus">Dotknięcia: 0</div>
-</div>
-<video id="cameraPreview" autoplay playsinline muted></video>
-<div class="results">
- <h2 style="margin:0 0 8px;font-size:17px">Wyniki testów</h2>
- <div id="resultList"><div class="result-row"><span>Brak wykonanych testów</span><span class="pill">Oczekuje</span></div></div>
- <button class="wide" onclick="makeReport()">Generuj raport</button>
- <button class="secondary wide" onclick="clearResults()">Wyczyść wyniki</button>
- <p class="note">Prywatność: prototyp działa lokalnie w przeglądarce. Nie wysyła wyników na serwer. Dostęp do kamery i mikrofonu wymaga Twojej zgody. Wyniki testów wymagających oceny użytkownika nie są automatycznym potwierdzeniem sprawności.</p>
-</div>
-<section id="reportPreview"></section><footer>CheckUp AI Mobile v0.3 · Prototyp koncepcyjny</footer>
-</main>
+<section id="cameraTools" class="card tools"><h3>Test aparatów</h3><div class="camgrid"><button onclick="startCamera('environment')">Aparat tylny</button><button class="secondary" onclick="startCamera('user')">Aparat przedni</button></div><video id="preview" class="video" autoplay playsinline muted></video><div class="status" id="camDetail">Wybierz aparat. Sprawdź obraz, ostrość i czy obiektyw nie jest zasłonięty.</div><button class="secondary wide" onclick="stopCamera()">Zatrzymaj kamerę</button></section>
+<section id="screenTools" class="card tools"><h3>Test ekranu</h3><div id="colorBox" class="colors" style="background:white"></div><button class="secondary" onclick="nextColor()">Kolejny kolor</button><div class="touch" id="touch">Przesuwaj palcem po tym polu</div><div class="status" id="touchStatus">Dotknięcia: 0</div></section>
+<section class="card results"><h2 style="font-size:16px;margin:0 0 8px">Wyniki testów</h2><div id="resultList"><div class="resultrow"><span>Brak wykonanych testów</span><span class="pill">Oczekuje</span></div></div><button class="wide" onclick="makeReport()">Generuj raport PDF</button><button class="secondary wide" onclick="clearAll()">Wyczyść wyniki</button><p class="note">Prywatność: wyniki pozostają lokalnie w przeglądarce. Aparat i mikrofon wymagają HTTPS i Twojej zgody. Brak dostępu do odczytu nie oznacza usterki.</p></section><section id="report"></section></main>
 <script>
-const results = {};
-function setResult(key,label,value,kind="info"){
- results[key]={label,value,kind};
- document.getElementById(key+"Status").textContent=value;
- render();
-}
-function render(){
- const box=document.getElementById("resultList");
- const entries=Object.values(results);
- if(!entries.length){box.innerHTML='<div class="result-row"><span>Brak wykonanych testów</span><span class="pill">Oczekuje</span></div>';return}
- box.innerHTML=entries.map(x=>`<div class="result-row"><span>${esc(x.label)}</span><span class="pill ${x.kind}">${esc(x.value)}</span></div>`).join("");
-}
-function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function runDevice(){
- const ua=navigator.userAgent;
- const info={platform:navigator.platform||"Nieudostępniona",language:navigator.language||"Nieznany",screen:`${screen.width} × ${screen.height}`,pixelRatio:devicePixelRatio,online:navigator.onLine?"Tak":"Nie",userAgent:ua};
- setResult("device","Informacje o urządzeniu", "Odczytano","good");
- results.device.details=info; render();
-}
-async function runBattery(){
- if(typeof navigator.getBattery!=="function"){
-  setResult("battery","Bateria","Brak dostępu do danych baterii w tej przeglądarce","warn");
-  results.battery.details={availability:"API baterii niedostępne w iOS Safari"};render();return;
- }
- try{
-  const b=await navigator.getBattery();
-  if(typeof b.level!=="number" || !Number.isFinite(b.level)){
-   setResult("battery","Bateria","Nie udało się odczytać poziomu baterii","warn");
-   results.battery.details={availability:"Przeglądarka nie zwróciła prawidłowego poziomu baterii"};render();return;
-  }
-  const val=`${Math.round(b.level*100)}%, ${b.charging?"ładowanie":"bez ładowania"}`;
-  setResult("battery","Bateria",val,"info");
-  results.battery.details={levelPercent:Math.round(b.level*100),charging:b.charging};render();
- }catch(e){
-  setResult("battery","Bateria","Brak dostępu do danych baterii","warn");
-  results.battery.details={availability:"Odczyt API baterii nie powiódł się"};render();
- }
-}
-let colorIndex=0;const colors=["#ffffff","#000000","#ff0000","#00ff00","#0000ff","#808080"];
-function runScreen(){document.getElementById("screenTools").classList.remove("hidden");document.getElementById("colorArea").style.display="block";nextColor();setResult("screen","Ekran","Test wizualny uruchomiony","info");}
-function nextColor(){const a=document.getElementById("colorArea");a.style.background=colors[colorIndex%colors.length];colorIndex++;}
-let touchCount=0;document.getElementById("touchArea").addEventListener("pointerdown",()=>{touchCount++;document.getElementById("touchStatus").textContent="Dotknięcia zarejestrowane: "+touchCount;setResult("touch","Reakcja dotyku",touchCount+" dotknięć","good");});
-let micStream=null, micContext=null, micFrame=null;
-async function runMic(){
- const status=document.getElementById("micStatus"), fill=document.getElementById("micMeterFill");
- if(!window.isSecureContext){setResult("mic","Mikrofon","Wymagane bezpieczne połączenie HTTPS","warn");return}
- if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){setResult("mic","Mikrofon","Ta przeglądarka nie udostępnia mikrofonu w tym trybie","warn");return}
- try{
-  if(micStream)micStream.getTracks().forEach(t=>t.stop());
-  micStream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}});
-  const C=window.AudioContext||window.webkitAudioContext;
-  if(!C)throw new Error("AudioContextUnavailable");
-  micContext=new C(); if(micContext.state==="suspended")await micContext.resume();
-  const source=micContext.createMediaStreamSource(micStream), analyser=micContext.createAnalyser();
-  analyser.fftSize=2048;source.connect(analyser);
-  const data=new Uint8Array(analyser.fftSize), start=performance.now(), duration=5000;
-  let peak=0,sumSquares=0,samples=0;
-  status.textContent="Mów przez 5 sekund…";
-  function measure(now){
-   analyser.getByteTimeDomainData(data);let square=0,localPeak=0;
-   for(const v of data){const n=Math.abs(v-128);square+=n*n;if(n>localPeak)localPeak=n}
-   const rms=Math.sqrt(square/data.length);peak=Math.max(peak,localPeak);sumSquares+=rms*rms;samples++;
-   fill.style.width=Math.min(100,Math.round(rms/35*100))+"%";
-   if(now-start<duration){micFrame=requestAnimationFrame(measure);return}
-   const avg=Math.round(Math.sqrt(sumSquares/Math.max(1,samples)));
-   micStream.getTracks().forEach(t=>t.stop());micStream=null;micContext.close();micContext=null;micFrame=null;
-   const result=avg>=3?"Zarejestrowano dźwięk — średni poziom "+avg:"Bardzo cichy sygnał. Spróbuj mówić bliżej mikrofonu";
-   setResult("mic","Mikrofon",result,avg>=3?"good":"warn");
-   results.mic.details={durationSeconds:5,averageSignal:avg,peakSignal:peak,interpretation:avg>=3?"Sygnał wykryty":"Sygnał bardzo niski; nie przesądza o usterce"};render();
-  }
-  micFrame=requestAnimationFrame(measure);
- }catch(e){
-  if(micStream){micStream.getTracks().forEach(t=>t.stop());micStream=null}
-  if(micContext){micContext.close();micContext=null}
-  fill.style.width="0%";
-  const msg=e.name==="NotAllowedError"?"Brak zgody. Sprawdź ustawienia dostępu do mikrofonu.":e.name==="NotFoundError"?"Nie znaleziono mikrofonu.":"Nie udało się uruchomić pomiaru ("+e.name+")";
-  setResult("mic","Mikrofon",msg,"warn");
- }
-}
-let camStream=null;
-async function runCamera(){
- if(!window.isSecureContext){setResult("camera","Aparat","Wymagane bezpieczne połączenie HTTPS","warn");return}
- if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){setResult("camera","Aparat","Safari nie udostępnia kamery w tym trybie. Otwórz stronę bezpośrednio w Safari.","warn");return}
- try{
-  if(camStream)camStream.getTracks().forEach(t=>t.stop());
-  try{camStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"}}})}
-  catch(first){camStream=await navigator.mediaDevices.getUserMedia({video:true})}
-  const v=document.getElementById("cameraPreview");v.srcObject=camStream;v.style.display="block";
-  await v.play().catch(()=>{});
-  setResult("camera","Aparat","Kamera uruchomiona — sprawdź podgląd","good");
- }catch(e){
-  const msg=e.name==="NotAllowedError"?"Brak zgody. Sprawdź Ustawienia iPhone’a → Safari → Aparat.":e.name==="NotFoundError"?"Nie znaleziono kamery.":"Błąd dostępu: "+e.name;
-  setResult("camera","Aparat",msg,"warn");
- }
-}
-let sensorHandler=null;
-async function runSensors(){
- try{
-  if(typeof DeviceMotionEvent!=="undefined"&&typeof DeviceMotionEvent.requestPermission==="function"){
-   const permission=await DeviceMotionEvent.requestPermission();if(permission!=="granted")throw new Error("permission");
-  }
-  if(!("DeviceMotionEvent" in window)){setResult("sensor","Czujniki","API niedostępne","warn");return}
-  let got=false;
-  const handler=e=>{if(got)return;got=true;const a=e.accelerationIncludingGravity||{};setResult("sensor","Czujniki",`Odczyt ruchu: X ${fmt(a.x)}, Y ${fmt(a.y)}, Z ${fmt(a.z)}`,"good");window.removeEventListener("devicemotion",handler)};
-  window.addEventListener("devicemotion",handler);
-  setTimeout(()=>{if(!got){window.removeEventListener("devicemotion",handler);setResult("sensor","Czujniki","Brak danych z czujnika","warn")}},2500);
- }catch(e){setResult("sensor","Czujniki","Brak zgody lub brak dostępu","warn")}
-}
-function fmt(v){return v==null?"—":Number(v).toFixed(1)}
-function runSpeaker(){
- try{const C=window.AudioContext||window.webkitAudioContext;const c=new C();const o=c.createOscillator();const g=c.createGain();o.frequency.value=440;g.gain.value=.12;o.connect(g);g.connect(c.destination);o.start();setTimeout(()=>{o.stop();c.close()},700);setResult("speaker","Głośnik","Odtworzono ton – oceń odsłuch","info")}
- catch(e){setResult("speaker","Głośnik","Nie udało się odtworzyć tonu","warn")}
-}
-function runNetwork(){
- const online=navigator.onLine;
- const secure=window.isSecureContext;
- const details={online,secureContext:secure,connectionType:navigator.connection?.effectiveType||"iOS nie udostępnia typu połączenia"};
- setResult("network","Łączność",online?"Przeglądarka zgłasza dostęp do sieci":"Przeglądarka zgłasza brak sieci",online?"good":"warn");
- results.network.details=details;render();
-}
-function makeReport(){
- const now=new Date().toLocaleString("pl-PL");
- const body=Object.values(results).map(x=>{
-  const detail=x.details ? (typeof x.details==="string"?x.details:Object.entries(x.details).map(([k,v])=>`${k}: ${v}`).join("; ")) : "Brak dodatkowych danych";
-  return `<tr><td>${esc(x.label)}</td><td>${esc(x.value)}</td><td>${esc(detail)}</td></tr>`;
- }).join("");
- const preview=document.getElementById("reportPreview");
- preview.innerHTML=`<h1>CHECKUP AI – Raport testowy v0.3</h1><p>Data: ${esc(now)}</p><p>Urządzenie: iPhone / iOS (szczegółowy model iOS może nie być dostępny dla aplikacji webowej).</p><table><tr><th>Test</th><th>Wynik</th><th>Szczegóły</th></tr>${body||'<tr><td colspan="3">Nie wykonano testów.</td></tr>'}</table><p><b>Ważne:</b> raport przedstawia wyłącznie testy wykonane przez prototyp webowy. Nie jest certyfikatem sprawności i nie zastępuje profesjonalnej diagnostyki.</p><button onclick="window.print()">Drukuj / Zapisz jako PDF</button><button class="secondary" onclick="document.getElementById('reportPreview').style.display='none'">Zamknij raport</button>`;
- preview.style.display="block";
- preview.scrollIntoView({behavior:"smooth",block:"start"});
-}
-function clearResults(){Object.keys(results).forEach(k=>delete results[k]);document.getElementById("micMeterFill").style.width="0%";document.querySelectorAll(".status").forEach(e=>e.textContent="Nie wykonano");render();if(camStream){camStream.getTracks().forEach(t=>t.stop());camStream=null;document.getElementById("cameraPreview").style.display="none"}}
-if("serviceWorker" in navigator && location.protocol.startsWith("http")){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));}
-</script>
-</body></html>
+const R={};let cam=null,micCtx=null,colors=['#fff','#000','#f00','#0f0','#00f','#808080'],ci=0,touches=0;
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function set(k,label,value,kind='info',details=''){R[k]={label,value,kind,details};const el=document.getElementById(k+'Status');if(el)el.textContent=value;render()}
+function render(){let a=Object.values(R);document.getElementById('resultList').innerHTML=a.length?a.map(x=>`<div class="resultrow"><span>${esc(x.label)}</span><span class="pill ${x.kind}">${esc(x.value)}</span></div>`).join(''):'<div class="resultrow"><span>Brak wykonanych testów</span><span class="pill">Oczekuje</span></div>'}
+function device(){let d={platform:navigator.platform,language:navigator.language,screen:`${screen.width} × ${screen.height}`,pixelRatio:devicePixelRatio,userAgent:navigator.userAgent};set('device','Informacje o urządzeniu','Odczytano','good',d)}
+async function battery(){if(!navigator.getBattery){set('battery','Bateria','Brak dostępu do danych baterii w iOS','warn',{availability:'API niedostępne'});return}try{let b=await navigator.getBattery();if(!Number.isFinite(b.level)){set('battery','Bateria','Nie udało się odczytać poziomu','warn');return}set('battery','Bateria',`${Math.round(b.level*100)}%`,'info',{charging:b.charging})}catch(e){set('battery','Bateria','Brak dostępu do danych','warn')}}
+async function cameraTest(){document.getElementById('cameraTools').style.display='block';set('camera','Aparaty','Wybierz przedni i tylny aparat do osobnego testu','info')}
+async function startCamera(mode){try{if(cam)cam.getTracks().forEach(t=>t.stop());cam=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:mode}}});let v=document.getElementById('preview');v.srcObject=cam;await v.play();let track=cam.getVideoTracks()[0],s=track.getSettings();document.getElementById('camDetail').textContent=`Obraz działa. Tryb: ${mode==='user'?'przedni':'tylny'}. ${s.width||'—'} × ${s.height||'—'}. Sprawdź ostrość i zabrudzenia obiektywu.`;set('camera','Aparaty',`Uruchomiono ${mode==='user'?'przedni':'tylny'} aparat`,'good',{facing:mode,width:s.width,height:s.height})}catch(e){set('camera','Aparaty',`Nie udało się uruchomić: ${e.name}`,'warn')}}
+function stopCamera(){if(cam)cam.getTracks().forEach(t=>t.stop());cam=null;document.getElementById('preview').srcObject=null;document.getElementById('camDetail').textContent='Kamera zatrzymana.'}
+async function micTest(){try{let st=await navigator.mediaDevices.getUserMedia({audio:true});let C=window.AudioContext||window.webkitAudioContext;micCtx=new C();if(micCtx.state==='suspended')await micCtx.resume();let src=micCtx.createMediaStreamSource(st),an=micCtx.createAnalyser();an.fftSize=2048;src.connect(an);let data=new Uint8Array(an.fftSize),start=performance.now(),sum=0,n=0,peak=0;document.getElementById('micStatus').textContent='Mów przez 5 sekund…';function loop(t){an.getByteTimeDomainData(data);let sq=0;for(let v of data){let q=Math.abs(v-128);sq+=q*q;peak=Math.max(peak,q)}let rms=Math.sqrt(sq/data.length);sum+=rms*rms;n++;document.getElementById('micFill').style.width=Math.min(100,rms/35*100)+'%';if(t-start<5000){requestAnimationFrame(loop);return}let avg=Math.round(Math.sqrt(sum/n));st.getTracks().forEach(x=>x.stop());micCtx.close();set('mic','Mikrofon',avg>=3?'Sygnał wykryty — '+avg:'Bardzo cichy sygnał — powtórz test',avg>=3?'good':'warn',{durationSeconds:5,averageSignal:avg,peakSignal:peak})}requestAnimationFrame(loop)}catch(e){set('mic','Mikrofon','Brak dostępu lub błąd: '+e.name,'warn')}}
+function screenTest(){document.getElementById('screenTools').style.display='block';nextColor();set('screen','Ekran','Test kolorów uruchomiony','info')}
+function nextColor(){document.getElementById('colorBox').style.background=colors[ci++%colors.length]}
+document.getElementById('touch').addEventListener('pointerdown',()=>{touches++;document.getElementById('touchStatus').textContent='Zarejestrowano dotknięcia: '+touches;set('touch','Reakcja dotyku',touches+' dotknięć','good')});
+function sensorTest(){if(!('DeviceMotionEvent'in window)){set('sensor','Czujniki','API niedostępne','warn');return}const h=e=>{let a=e.accelerationIncludingGravity||{};set('sensor','Czujniki',`X ${a.x?.toFixed(1)||'—'}, Y ${a.y?.toFixed(1)||'—'}, Z ${a.z?.toFixed(1)||'—'}`,'good');window.removeEventListener('devicemotion',h)};if(DeviceMotionEvent.requestPermission)DeviceMotionEvent.requestPermission().then(p=>p==='granted'?window.addEventListener('devicemotion',h):set('sensor','Czujniki','Brak zgody','warn')).catch(()=>set('sensor','Czujniki','Brak dostępu','warn'));else window.addEventListener('devicemotion',h);setTimeout(()=>window.removeEventListener('devicemotion',h),3000)}
+function speakerTest(){try{let C=window.AudioContext||window.webkitAudioContext,c=new C(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=440;g.gain.value=.12;o.start();setTimeout(()=>{o.frequency.value=880},350);setTimeout(()=>{o.stop();c.close()},700);set('speaker','Głośnik','Odtworzono dwa tony — oceń odsłuch','info')}catch(e){set('speaker','Głośnik','Nie udało się odtworzyć tonu','warn')}}
+function networkTest(){set('network','Łączność',navigator.onLine?'Przeglądarka zgłasza połączenie online':'Brak połączenia online',navigator.onLine?'good':'warn',{online:navigator.onLine})}
+function makeReport(){let rows=Object.values(R).map(x=>`<tr><td>${esc(x.label)}</td><td>${esc(x.value)}</td><td>${esc(typeof x.details==='object'?JSON.stringify(x.details):x.details)}</td></tr>`).join('');let w=window.open('','_blank');if(!w){alert('Safari zablokowało nowe okno. Otwórz aplikację bezpośrednio w Safari.');return}w.document.write(`<!doctype html><html lang="pl"><meta charset="utf-8"><title>Raport CheckUp AI</title><style>body{font:15px Arial;margin:24px;color:#17202a}table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid #ddd;padding:9px;text-align:left;overflow-wrap:anywhere}button{padding:12px;background:#2678f5;color:white;border:0;border-radius:8px}@media print{button{display:none}}</style><h1>CHECKUP AI – Raport v0.5</h1><p>${new Date().toLocaleString('pl-PL')}</p><table><tr><th>Test</th><th>Wynik</th><th>Szczegóły</th></tr>${rows||'<tr><td colspan="3">Nie wykonano testów</td></tr>'}</table><p>Brak danych nie oznacza usterki. Prototyp nie jest certyfikatem sprawności.</p><button onclick="window.print()">Drukuj / Zapisz jako PDF</button>`);w.document.close()}
+function clearAll(){Object.keys(R).forEach(k=>delete R[k]);render();['device','battery','camera','mic','screen','sensor','speaker','network'].forEach(k=>{let e=document.getElementById(k+'Status');if(e)e.textContent='Nie wykonano'});stopCamera()}
+if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script></body></html>

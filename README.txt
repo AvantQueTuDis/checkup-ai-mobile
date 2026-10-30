@@ -1,12 +1,5 @@
-CHECKUP AI MOBILE v0.4
-
-Poprawka raportu:
-- raport ponownie otwiera się w osobnej karcie/oknie, tak jak we wcześniejszym prototypie
-- przycisk drukowania znajduje się w samym raporcie; na iPhonie powinien wywołać systemowe menu drukowania Safari
-- nowy identyfikator pamięci podręcznej service workera: v0.4
-
-Aktualizacja:
-Wgraj wszystkie pliki z ZIP do głównego katalogu repozytorium GitHub, potwierdź zastąpienie istniejących plików i kliknij Commit changes.
-Po aktualizacji uruchom stronę bezpośrednio w Safari (nie z ikony ekranu początkowego) i przetestuj raport. Jeśli pojawi się nowa karta z raportem, kliknij Drukuj / Zapisz jako PDF. W oknie drukowania użyj opcji Udostępnij/Zachowaj w Plikach.
-
-Jeśli Safari blokuje nowe okno, zezwól na wyskakujące okna albo uruchom stronę bezpośrednio w Safari.
+CHECKUP AI iOS v0.5
+Wgraj wszystkie pliki do katalogu głównego repozytorium GitHub, zastępując istniejące pliki. Zachowaj nazwy. GitHub Pages pozostaje na main /(root).
+Po publikacji otwórz stronę w Safari. Aparaty: osobno uruchom tylny i przedni przyciskiem. Safari może udostępnić tylko wybrany aparat, nie wszystkie obiektywy iPhone’a. Obraz i rozdzielczość są odczytywane z API przeglądarki; autofokus/stabilizacja nie są wiarygodnie diagnozowane.
+PDF: Generuj raport PDF, potem przycisk drukowania w nowej karcie Safari.
+Mikrofon: mów przez pełne 5 sekund.
